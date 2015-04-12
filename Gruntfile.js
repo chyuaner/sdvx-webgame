@@ -18,7 +18,8 @@ module.exports = function(grunt) {
     connect: {
         server: {
             options: {
-                hostname: '*'
+                hostname: '*',
+                base: 'public'
             }
         }
     },
