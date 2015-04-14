@@ -24,6 +24,8 @@ track.position.y = -1;
 // 判定線
 var judge_line_geometry = new THREE.CylinderGeometry(0.015, 0.015, 1.1);
 var judge_line_material = new THREE.MeshBasicMaterial({ color: 0xFF00A6 });
+judge_line_material.transparent = true;
+judge_line_material.opacity = 0.63;
 var judge_line = new THREE.Mesh(judge_line_geometry, judge_line_material);
 judge_line.rotation.z = THREE.Math.degToRad(90);
 judge_line.position.y = -0.9;
@@ -88,7 +90,7 @@ camera.rotation.x = THREE.Math.degToRad(0);
 // 視角上下遠近(數字越大越遠)
 camera.position.y = 0;
 // 視角遠近
-camera.position.z = 6;
+camera.position.z = 6.16;
 
 var s = 0;
 var render = function () {
