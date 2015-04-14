@@ -10,6 +10,15 @@ renderer.setSize( window.innerWidth, window.innerHeight);
 renderer.setViewport (0, 0, window.innerWidth, window.innerHeight + offset);
 document.body.appendChild(renderer.domElement);
 
+// 定位輔助線
+var location_line_material = new THREE.LineBasicMaterial({color: 0xffffff});
+var location_line_geometry = new THREE.Geometry();
+    location_line_geometry.vertices.push(new THREE.Vector3(-0.3, 0.1, 0));
+    location_line_geometry.vertices.push(new THREE.Vector3(0.3, 0.1, 0));
+var location_line = new THREE.Line(location_line_geometry, location_line_material);
+scene.add(location_line);
+
+
 // 建立背景
 var bg = new BackGround();
 
@@ -33,6 +42,25 @@ judge_line.position.z = 4.16;
 scene.add(judge_line);
 // 判定線左右偏移(+-0.07)
 judge_line.position.x = 0;
+
+// 左旋鈕
+var cur_l_geometry = new THREE.BoxGeometry(0.1, 0.01, 0.1);
+var cur_l_material = new THREE.MeshBasicMaterial({ map: THREE.ImageUtils.loadTexture('../imgs/laser_lcur.png') });
+var cur_l = new THREE.Mesh(cur_l_geometry, cur_l_material);
+cur_l.position.y = -0.88;
+cur_l.position.z = 4.15;
+cur_l.position.x = -0.36;
+scene.add(cur_l);
+
+// 右旋鈕
+var cur_r_geometry = new THREE.BoxGeometry(0.1, 0.01, 0.1);
+var cur_r_material = new THREE.MeshBasicMaterial({ map: THREE.ImageUtils.loadTexture('../imgs/laser_rcur.png') });
+var cur_r = new THREE.Mesh(cur_r_geometry, cur_r_material);
+cur_r.position.y = -0.88;
+cur_r.position.z = 4.15;
+cur_r.position.x = 0.36;
+scene.add(cur_r);
+
 
 // 建立其中bt白音符
 var bt_geometry = new THREE.BoxGeometry(0.15, 0.01, 0.09);
