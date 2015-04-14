@@ -44,21 +44,23 @@ scene.add(judge_line);
 judge_line.position.x = 0;
 
 // 左旋鈕
-var cur_l_geometry = new THREE.BoxGeometry(0.1, 0.01, 0.1);
-var cur_l_material = new THREE.MeshBasicMaterial({ map: THREE.ImageUtils.loadTexture('../imgs/laser_lcur.png') });
+var cur_l_geometry = new THREE.BoxGeometry(0.1, 0, 0.1);
+var cur_l_material = new THREE.MeshBasicMaterial({ map: THREE.ImageUtils.loadTexture('../imgs/laser_lcur.png'),transparent: true });
 var cur_l = new THREE.Mesh(cur_l_geometry, cur_l_material);
-cur_l.position.y = -0.88;
-cur_l.position.z = 4.15;
-cur_l.position.x = -0.36;
+cur_l.position.y = -0.85;
+cur_l.position.z = 4.25;
+cur_l.rotation.x = THREE.Math.degToRad(25);
+cur_l.position.x = -0.33;
 scene.add(cur_l);
 
 // 右旋鈕
-var cur_r_geometry = new THREE.BoxGeometry(0.1, 0.01, 0.1);
-var cur_r_material = new THREE.MeshBasicMaterial({ map: THREE.ImageUtils.loadTexture('../imgs/laser_rcur.png') });
+var cur_r_geometry = new THREE.BoxGeometry(0.1, 0, 0.1);
+var cur_r_material = new THREE.MeshBasicMaterial({ map: THREE.ImageUtils.loadTexture('../imgs/laser_rcur.png'),transparent: true });
 var cur_r = new THREE.Mesh(cur_r_geometry, cur_r_material);
-cur_r.position.y = -0.88;
-cur_r.position.z = 4.15;
-cur_r.position.x = 0.36;
+cur_r.position.y = -0.85;
+cur_r.position.z = 4.25;
+cur_r.rotation.x = THREE.Math.degToRad(25);
+cur_r.position.x = 0.33;
 scene.add(cur_r);
 
 
@@ -130,7 +132,7 @@ var render = function () {
 
     camera.rotation.z = Math.cos(s * 0.1) * THREE.Math.degToRad(20);
     judge_line.position.x = Math.cos(s * 0.5) * 0.07;
-    // bt2_cube.position.z =  Math.cos(s * 0.05) * 4.5;
+    bt2_cube.position.z = ((s * 0.8) % 20) - 10;
 
     renderer.render(scene, camera);
 };
